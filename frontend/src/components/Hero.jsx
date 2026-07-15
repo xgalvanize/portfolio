@@ -70,14 +70,14 @@ export default function Hero() {
 
       <div className="hero-terminal" aria-hidden="true">
         <div className="terminal-bar">
-          <span className="dot dot-red"    />
+          {/* <span className="dot dot-red"    />
           <span className="dot dot-yellow" />
-          <span className="dot dot-green"  />
-          <span className="terminal-title">zsh — ~/projects</span>
+          <span className="dot dot-green"  /> */}
+          <span className="terminal-title">zsh — ~/Projects</span>
         </div>
         <div className="terminal-body">
           <p className="t-line">
-            <span className="t-prompt">❯</span>
+            <span className="t-prompt">❯&nbsp;</span>
             <span className="t-cmd"> kubectl get pods -n chatbot</span>
           </p>
           <p className="t-line t-out">NAME                          READY   STATUS</p>
@@ -86,7 +86,7 @@ export default function Hero() {
           <p className="t-line t-out">chatbot-cloudflared-xxx&nbsp;&nbsp;&nbsp;1/1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="t-green">Running</span></p>
           <p className="t-line t-spacer" />
           <p className="t-line">
-            <span className="t-prompt">❯</span>
+            <span className="t-prompt">❯&nbsp;</span>
             <span className="t-cmd"> curl https://chat.xgalvanize.ca/health</span>
           </p>
           <p className="t-line t-out t-json">
@@ -94,7 +94,7 @@ export default function Hero() {
           </p>
           <p className="t-line t-spacer" />
           <p className="t-line">
-            <span className="t-prompt">❯</span>
+            <span className="t-prompt">❯&nbsp;</span>
             <span className="t-blink"> █</span>
           </p>
         </div>

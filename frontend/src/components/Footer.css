@@ -1,0 +1,41 @@
+.footer {
+  border-top: 1px solid #0d1828;
+  padding: 1.5rem;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #8ab0c4;
+}
+
+.logo-bracket { color: #00d9ff; }
+
+.footer-copy {
+  flex: 1;
+  color: #3a5a6a;
+  font-size: 0.82rem;
+}
+
+.footer-link {
+  font-size: 0.82rem;
+  color: #00a8c8;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-link:hover {
+  color: #00d9ff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

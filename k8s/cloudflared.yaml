@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-cloudflared
+  namespace: portfolio
+  labels:
+    app: portfolio-cloudflared
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio-cloudflared
+  template:
+    metadata:
+      labels:
+        app: portfolio-cloudflared
+    spec:
+      containers:
+        - name: cloudflared
+          image: cloudflare/cloudflared:latest
+          imagePullPolicy: Always
+          args:
+            - tunnel
+            - --no-autoupdate
+            - run
+            - --token
+            - $(CLOUDFLARE_TUNNEL_TOKEN)
+            - --url
+            - http://portfolio-frontend.portfolio.svc.cluster.local:80
+          env:
+            - name: CLOUDFLARE_TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: portfolio-cloudflared-credentials
+                  key: token
+          resources:
+            requests:
+              cpu: "25m"
+              memory: "32Mi"
+            limits:
+              cpu: "100m"
+              memory: "64Mi"

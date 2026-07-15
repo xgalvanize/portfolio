@@ -1,0 +1,213 @@
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(0, 217, 255, 0.6); }
+  60%       { box-shadow: 0 0 0 6px rgba(0, 217, 255, 0);   }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Layout ── */
+.hero {
+  min-height: calc(100vh - 64px);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 4rem;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  animation: fade-up 0.6s ease both;
+}
+
+.hero-inner {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Eyebrow ── */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #00d9ff;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+}
+
+.eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  background: #00d9ff;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse-green 2.4s ease-in-out infinite;
+  box-shadow: 0 0 8px #00d9ff;
+}
+
+/* ── Name ── */
+.hero-name {
+  font-size: clamp(3.2rem, 8vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 1rem;
+  color: #ddeef5;
+  text-shadow: 0 0 80px rgba(0, 217, 255, 0.18), 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ── Typewriter role ── */
+.hero-role {
+  font-size: clamp(1.05rem, 2.5vw, 1.4rem);
+  color: #00a8c8;
+  margin-bottom: 1.6rem;
+  min-height: 1.8em;
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+  font-weight: 500;
+}
+
+.hero-cursor {
+  animation: blink 1s step-start infinite;
+  color: #00d9ff;
+  margin-left: 1px;
+}
+
+/* ── Description ── */
+.hero-desc {
+  color: #4a7080;
+  font-size: 1.05rem;
+  line-height: 1.78;
+  max-width: 440px;
+  margin-bottom: 2.4rem;
+}
+
+/* ── CTA buttons ── */
+.hero-cta {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: rgba(0, 217, 255, 0.08);
+  border: 1px solid #00d9ff;
+  color: #00d9ff;
+  text-decoration: none;
+  padding: 0.72rem 1.65rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.15s, transform 0.12s, box-shadow 0.15s;
+  box-shadow: 0 0 18px rgba(0, 217, 255, 0.2);
+}
+
+.btn-primary:hover {
+  background: rgba(0, 217, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 217, 255, 0.38), 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+
+.btn-ghost {
+  border: 1px solid #0d1828;
+  color: #4a7080;
+  text-decoration: none;
+  padding: 0.72rem 1.65rem;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(0, 217, 255, 0.3);
+  color: #00a8c8;
+}
+
+/* ── Terminal widget ── */
+.hero-terminal {
+  flex-shrink: 0;
+  width: 420px;
+  background: #02050a;
+  border: 1px solid #0d1828;
+  border-radius: 4px;
+  overflow: hidden;
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+  font-size: 0.8rem;
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(0, 217, 255, 0.06),
+    inset 0 1px 0 rgba(0, 217, 255, 0.03);
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.65rem 0.95rem;
+  background: #040810;
+  border-bottom: 1px solid #0d1828;
+}
+
+.dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+.dot-red    { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green  { background: #28c840; }
+
+.terminal-title {
+  flex: 1;
+  text-align: center;
+  color: #1a3040;
+  font-size: 0.73rem;
+}
+
+.terminal-body {
+  padding: 1rem 1.1rem 1.1rem;
+  line-height: 1.88;
+}
+
+.t-line {
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+}
+
+.t-prompt { color: #ffaa00; user-select: none; }
+.t-cmd    { color: #00d9ff; }
+.t-out    { color: #1a3040; font-size: 0.77rem; }
+.t-json   { color: #1a3040; font-size: 0.77rem; }
+.t-green  { color: #00d9ff; }
+.t-spacer { height: 0.35rem; }
+
+.t-blink {
+  color: #00d9ff;
+  animation: blink 1s step-start infinite;
+}
+
+/* ── Responsive ── */
+@media (max-width: 920px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+    padding-top: 5rem;
+    min-height: unset;
+  }
+
+  .hero-terminal {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-desc { font-size: 0.96rem; }
+  .btn-primary, .btn-ghost { font-size: 0.88rem; padding: 0.62rem 1.2rem; }
+}

@@ -34,7 +34,7 @@ const STACK = [
   {
     category: 'Environment',
     accent: '#fb7185',
-    items: ['Manjaro Linux', 'VS Code', 'Git', 'Zsh / Bash'],
+    items: ['Manjaro', 'Ubuntu', 'VS Code', 'Git', 'Zsh / Bash'],
   },
 ]
 

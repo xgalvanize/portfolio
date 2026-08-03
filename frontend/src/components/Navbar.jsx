@@ -24,6 +24,7 @@ export default function Navbar() {
           <a href="#about"    onClick={close}>About</a>
           <a href="#stack"    onClick={close}>Stack</a>
           <a href="#projects" onClick={close}>Projects</a>
+          <a href="#contact"  onClick={close}>Contact</a>
           <a
             href="https://chat.xgalvanize.ca"
             target="_blank"

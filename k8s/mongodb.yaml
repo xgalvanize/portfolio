@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-mongodb
+  namespace: portfolio
+  labels:
+    app: portfolio-mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio-mongodb
+  template:
+    metadata:
+      labels:
+        app: portfolio-mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: mongo:7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 27017
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: portfolio-contact-secrets
+                  key: mongodb-root-username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: portfolio-contact-secrets
+                  key: mongodb-root-password
+          volumeMounts:
+            - name: mongodb-data
+              mountPath: /data/db
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "384Mi"
+      volumes:
+        - name: mongodb-data
+          persistentVolumeClaim:
+            claimName: portfolio-mongodb-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-mongodb
+  namespace: portfolio
+spec:
+  selector:
+    app: portfolio-mongodb
+  ports:
+    - port: 27017
+      targetPort: 27017
+  type: ClusterIP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: portfolio-mongodb-pvc
+  namespace: portfolio
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi

@@ -16,6 +16,9 @@ build/
 # Docker
 *.tar
 
+# Generated manifests
+k8s/secrets.yaml
+
 # Editor
 .vscode/
 .idea/

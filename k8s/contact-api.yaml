@@ -1,0 +1,99 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-contact-api
+  namespace: portfolio
+  labels:
+    app: portfolio-contact-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio-contact-api
+  template:
+    metadata:
+      labels:
+        app: portfolio-contact-api
+    spec:
+      containers:
+        - name: contact-api
+          image: portfolio-contact-api:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGODB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: portfolio-contact-secrets
+                  key: mongodb-root-username
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: portfolio-contact-secrets
+                  key: mongodb-root-password
+            - name: MONGODB_DB
+              valueFrom:
+                secretKeyRef:
+                  name: portfolio-contact-secrets
+                  key: mongodb-db
+            - name: MONGODB_HOST
+              value: portfolio-mongodb.portfolio.svc.cluster.local
+            - name: MONGODB_PORT
+              value: "27017"
+            - name: ADMIN_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: portfolio-contact-secrets
+                  key: admin-api-token
+                  optional: true
+            - name: TURNSTILE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: portfolio-contact-secrets
+                  key: turnstile-secret-key
+                  optional: true
+            - name: RATE_LIMIT_WINDOW_MS
+              valueFrom:
+                secretKeyRef:
+                  name: portfolio-contact-secrets
+                  key: rate-limit-window-ms
+                  optional: true
+            - name: RATE_LIMIT_MAX_REQUESTS
+              valueFrom:
+                secretKeyRef:
+                  name: portfolio-contact-secrets
+                  key: rate-limit-max-requests
+                  optional: true
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "25m"
+              memory: "48Mi"
+            limits:
+              cpu: "150m"
+              memory: "128Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-contact-api
+  namespace: portfolio
+spec:
+  selector:
+    app: portfolio-contact-api
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: ClusterIP

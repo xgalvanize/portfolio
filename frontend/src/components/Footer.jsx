@@ -10,9 +10,6 @@ export default function Footer() {
         <span className="footer-copy">
           xgalvanize.ca &mdash; {new Date().getFullYear()}
         </span>
-        <a href="#contact" className="footer-link">
-          Contact
-        </a>
         <a
           href="https://chat.xgalvanize.ca"
           target="_blank"

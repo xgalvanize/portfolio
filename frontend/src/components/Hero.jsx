@@ -4,7 +4,8 @@ import './Hero.css'
 const ROLES = [
   'Full-Stack Development',
   'MERN Stack',
-  'FastAPI & Django',
+  'GraphQL',
+  'FastAPI',
   'Kubernetes Deployment',
   'AI-Integrated Applications',
 ]

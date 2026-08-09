@@ -4,20 +4,24 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-inner">
-        <span className="footer-logo">
-          <span className="logo-bracket">&lt;</span>XG<span className="logo-bracket">/&gt;</span>
-        </span>
-        <span className="footer-copy">
-          xgalvanize.ca &mdash; {new Date().getFullYear()}
-        </span>
-        <a
-          href="https://chat.xgalvanize.ca"
-          target="_blank"
-          rel="noreferrer"
-          className="footer-link"
-        >
-          chat.xgalvanize.ca ↗
-        </a>
+        <div className="footer-brand">
+          <span className="footer-logo">
+            <span className="logo-bracket">&lt;</span>XG<span className="logo-bracket">/&gt; <span  className="footer-copy">xgalvanize.ca {new Date().getFullYear()}</span></span>
+          </span>
+     {/*      <span className="footer-copy">
+            xgalvanize.ca {new Date().getFullYear()}
+          </span> */}
+        </div>
+        <div className="footer-links">
+          <a
+            href="https://chat.xgalvanize.ca"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-link"
+          >
+            AI Chat -&gt;
+          </a>
+        </div>
       </div>
     </footer>
   )

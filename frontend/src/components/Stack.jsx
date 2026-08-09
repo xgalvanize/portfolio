@@ -9,7 +9,7 @@ const STACK = [
   {
     category: 'Backend',
     accent: '#34d399',
-    items: ['FastAPI', 'Django', 'Node.js', 'Express'],
+    items: ['FastAPI', 'Node.js', 'Express'],
   },
   {
     category: 'APIs & Real-time',

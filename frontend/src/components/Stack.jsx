@@ -4,7 +4,7 @@ const STACK = [
   {
     category: 'Frontend',
     accent: '#818cf8',
-    items: ['React', 'Vite', 'CSS Grid & Flexbox', 'Responsive Design'],
+    items: ['React', 'CSS Grid & Flexbox', 'Responsive Design'],
   },
   {
     category: 'Backend',

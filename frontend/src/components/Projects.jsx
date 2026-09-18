@@ -9,6 +9,13 @@ const PROJECTS = [
     status: 'live',
   },
   {
+    name: 'XGalvanize Chess',
+    url: 'https://chess.xgalvanize.ca',
+    desc: 'A Blade Runner-inspired fantasy chess web app where every piece is represented as an original neon holo-card. Includes a React game interface, FastAPI rules engine with AI response moves, and self-hosted deployment on k3s through Cloudflare Tunnel.',
+    tags: ['React', 'FastAPI', 'python-chess', 'Vite', 'Docker', 'Kubernetes', 'Cloudflare'],
+    status: 'live',
+  },
+  {
     name: 'XGalvanize Identity',
     desc: 'A standalone authentication microservice that exchanges Firebase ID tokens for short-lived custom JWTs with refresh-token rotation. Built as a shared identity layer for multiple applications within the same Kubernetes cluster, backed by MongoDB.',
     tags: ['FastAPI', 'Firebase Admin SDK', 'MongoDB', 'JWT', 'Kubernetes', 'Docker'],
